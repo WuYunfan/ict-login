@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*-coding:utf-8-*-
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
@@ -7,11 +5,12 @@ import os
 
 os.environ["PATH"] += os.pathsep + os.path.dirname(os.path.realpath(__file__))
 driver = webdriver.PhantomJS()
-driver.get('https://gw.ict.ac.cn/srun_portal_pc.php?ac_id=1&')
-name = driver.find_element_by_name("username")
-name.send_keys('amos')
+driver.get('https://gw.ict.ac.cn/')
+driver.set_window_size(1124, 850)
+name = driver.find_element_by_id("username")
+name.send_keys('账号')
 password = driver.find_element_by_id('password')
-password.send_keys('bird')
-password.send_keys(Keys.RETURN)
+password.send_keys('密码')
+driver.find_element_by_id('login-account').click()
 time.sleep(1)
 driver.quit()
